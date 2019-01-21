@@ -7,6 +7,8 @@ import { Store } from 'redux';
 
 const { JssProvider } = require('react-jss');
 
+const { ThemeProvider } = require('@material-ui/styles');
+
 interface StaticContainerProps {
   shouldUpdate?: boolean;
 }
@@ -65,7 +67,9 @@ const Root = <State extends any>({ renderArgs, store, styleSheets }: RootProps<S
   return (
     <Provider store={store}>
       <JssProvider registry={styleSheets}>
-        <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
+        <ThemeProvider theme={{ color: 'red' }}>
+          <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
+        </ThemeProvider>
       </JssProvider>
     </Provider>
   );

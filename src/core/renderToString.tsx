@@ -8,6 +8,10 @@ import { createRouterRender } from './Root';
 
 const { JssProvider } = require('react-jss');
 
+const { ThemeProvider, createGenerateClassName } = require('@material-ui/styles');
+
+const generateClassName = createGenerateClassName();
+
 export default async function<State = any>({
   found,
   store,
@@ -25,9 +29,11 @@ export default async function<State = any>({
     renderToString(
       <Provider store={store}>
         <JssProvider registry={styleSheets}>
-          <foundServer.RouterProvider router={renderArgs.router}>
-            {createRouterRender(renderArgs)}
-          </foundServer.RouterProvider>
+          <ThemeProvider generateClassName={generateClassName} theme={{ color: 'red' }}>
+            <foundServer.RouterProvider router={renderArgs.router}>
+              {createRouterRender(renderArgs)}
+            </foundServer.RouterProvider>
+          </ThemeProvider>
         </JssProvider>
       </Provider>,
       wrappedEpic,

@@ -6,6 +6,8 @@ import logo from './react.svg';
 
 import './Home.css';
 
+import JSSButton from './components/JSSButton';
+
 class Home extends React.Component {
   public render() {
     return (
@@ -14,6 +16,9 @@ class Home extends React.Component {
           <img src={logo} className="Home-logo" alt="logo" />
           <h2>Welcome to Razzle.js</h2>
         </div>
+
+        <JSSButton />
+
         <p className="Home-intro">
           To get started, edit <code>src/Home.js</code> or <code>src/About.js</code>and save to reload.
         </p>
